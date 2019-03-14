@@ -30,7 +30,7 @@ class Memory
     reveal
     end_screen
     rainbow
-    sleep 30
+    sleep 5
   end
 
   def game_over?
