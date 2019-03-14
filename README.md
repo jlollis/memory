@@ -9,8 +9,8 @@ To play:
 <br />
 
 <p align="center">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png" width="150">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png" width="450">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png" width=30%>
 </p>
 
 <br />
