@@ -20,10 +20,10 @@ class Memory
   def play
     clear
     populate_board
-
-    end_screen
-    sleep (20)
-    until game_over? == true
+    start_screen
+    sleep (2)
+    # until game_over? == true
+    until game_over?
       take_turn
     end
     end_screen
@@ -45,11 +45,9 @@ class Memory
       end
     end
     cards
-
   end
 
   def populate_board
-    # puts @cards[0].image
     (0..9).each do |i|
       @board[i] = @cards[i].image
       @board[i] = " #{i} "
@@ -108,13 +106,10 @@ class Memory
   end
 
   def reveal
-    # puts @cards[0].image
     (0...16).each do |i|
-      # puts @cards[i].image
       @board[i] = " #{@cards[i].image} "
     end
   end
-
 
   def take_turn
     clear
@@ -131,6 +126,7 @@ class Memory
     @board[@pick2] = " #{@cards[@pick2].image} "
     clear
     render_board
+
     if @cards[@pick1].image == @cards[@pick2].image
       puts " You have a match!"
       puts
@@ -148,20 +144,25 @@ class Memory
   end
 
   def reset_card(square)
-    if square <= 9
-      @board[square] = " #{square} "
-    else
-      @board[square] = " #{square}"
-    end
+    # then converted block to ternary operator
+    # (not sure if improvement...)
+    # @board[square] = (square <= 9) ? " #{square} " : " #{square}"
+    @board[square] = square <= 9 ? " #{square} " : " #{square}"
 
+    # https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/ConditionalAssignment
+    # Changed the following to code above:
+    # if square <= 9
+    #   @board[square] = " #{square} "
+    # else
+    #   @board[square] = " #{square}"
+    # end
   end
 
   def clear
     # multi-platform clear
-    system "clear"
+    system 'clear'
     puts "\e[H\e[2J"
-    system ("cls")
-    system('cls')
+    system 'cls'
   end
 
   def end_screen
