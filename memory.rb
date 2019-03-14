@@ -59,25 +59,50 @@ class Memory
   end
 
   def render_board
-    # top = "    ╔═════╦═════╦═════╦═════╗"
-    # bar = "    ╠═════╬═════╬═════╬═════╣"
-    # btm = "    ╚═════╩═════╩═════╩═════╝"
-    #
-    # puts top
-    # (0..4).each do |i|
-    #   puts"║ #{@board[i]} "
-    # end
+    top = "    ╔═════╦═════╦═════╦═════╗"
+    bar = "    ╠═════╬═════╬═════╬═════╣"
+    btm = "    ╚═════╩═════╩═════╩═════╝"
 
-    puts "    ╔═════╦═════╦═════╦═════╗"
-    puts "    ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║"
-    puts "    ╠═════╬═════╬═════╬═════╣"
-    puts "    ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║"
-    puts "    ╠═════╬═════╬═════╬═════╣"
-    puts "    ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║"
-    puts "    ╠═════╬═════╬═════╬═════╣"
-    puts "    ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║"
-    puts "    ╚═════╩═════╩═════╩═════╝"
+    puts top
+    print"    ║"
+    (0...4).each do |i|
+      print" #{@board[i]} ║"
+    end
     puts
+
+    puts bar
+    print"    ║"
+    (4...8).each do |i|
+      print" #{@board[i]} ║"
+    end
+    puts
+
+    puts bar
+    print"    ║"
+    (8...12).each do |i|
+      print" #{@board[i]} ║"
+    end
+    puts
+
+    puts bar
+    print"    ║"
+    (12...16).each do |i|
+      print" #{@board[i]} ║"
+    end
+    puts
+    puts btm
+    puts
+
+    # puts "    ╔═════╦═════╦═════╦═════╗"
+    # puts "    ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║"
+    # puts "    ╠═════╬═════╬═════╬═════╣"
+    # puts "    ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║"
+    # puts "    ╠═════╬═════╬═════╬═════╣"
+    # puts "    ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║"
+    # puts "    ╠═════╬═════╬═════╬═════╣"
+    # puts "    ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║"
+    # puts "    ╚═════╩═════╩═════╩═════╝"
+    # puts
   end
 
   def reveal
@@ -152,8 +177,7 @@ class Memory
   '..'  ':::'     * /\\ *     .'/.\\'.   '
       *            *..*         :
       *
-      . YOU BEAT THIS SWEET GAME HARDER THAN
-              A TEN DOLLAR IKEA RUG!!!
+      .
 
 "
     colorizer.write "#{congrats}"
