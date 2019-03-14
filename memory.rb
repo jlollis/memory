@@ -20,12 +20,19 @@ class Memory
   def play
     clear
     populate_board
+
+    clear
+    # reveal
+    # end_screen
+    # rainbow
     start_screen
     sleep (2)
     # until game_over? == true
     until game_over?
       take_turn
     end
+    clear
+    reveal
     end_screen
     sleep (60)
   end
@@ -92,24 +99,31 @@ class Memory
     puts
     puts btm
     puts
-
-    # puts "    ╔═════╦═════╦═════╦═════╗"
-    # puts "    ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║"
-    # puts "    ╠═════╬═════╬═════╬═════╣"
-    # puts "    ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║"
-    # puts "    ╠═════╬═════╬═════╬═════╣"
-    # puts "    ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║"
-    # puts "    ╠═════╬═════╬═════╬═════╣"
-    # puts "    ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║"
-    # puts "    ╚═════╩═════╩═════╩═════╝"
-    # puts
   end
 
-  def reveal
-    (0...16).each do |i|
-      @board[i] = " #{@cards[i].image} "
-    end
-  end
+#   def reveal
+#     (0...16).each do |i|
+#       @board[i] = " #{@cards[i].image} "
+#       end
+#   end
+#
+#   def rainbow
+#     # "I always look for rainbows..."
+#     colorizer = Lolize::Colorizer.new
+#       solved = "
+#              ╔═════╦═════╦═════╦═════╗
+#              ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║
+#              ╠═════╬═════╬═════╬═════╣
+#              ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║
+#              ╠═════╬═════╬═════╬═════╣
+#              ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║
+#              ╠═════╬═════╬═════╬═════╣
+#              ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║
+#              ╚═════╩═════╩═════╩═════╝
+#
+# "
+#     colorizer.write "#{solved}"
+#   end
 
   def take_turn
     clear
@@ -165,29 +179,6 @@ class Memory
     system 'cls'
   end
 
-  def end_screen
-    colorizer = Lolize::Colorizer.new
-    congrats = "
-
-
-               You are a Match 2 GOD!
-                                   .''.
-       .''.      .        *''*    :_\\/_:     .
-      :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.
-  .''.: /\\ :   ./)\\   ':'* /\\ * :  '..'.  -=:o:=-
- :_\\/_:'.:::.    ' *''*    * '.\\'/.' _\\(/_'.':'.'
- : /\\ : :::::     *_\\/_*     -= o =-  /)\\    '  *
-  '..'  ':::'     * /\\ *     .'/.\\'.   '
-      *            *..*         :
-      *
-      .              YOU WIN!!!
-
-
-"
-    colorizer.write "#{congrats}"
-
-  end
-
   def start_screen
     colorizer = Lolize::Colorizer.new
     splash = "
@@ -205,6 +196,69 @@ class Memory
 "
     colorizer.write "#{splash}"
   end
+
+
+  def end_screen
+    colorizer = Lolize::Colorizer.new
+    congrats = "
+               You are a Match 2 GOD!
+
+                                   .''.
+       .''.      .        *''*    :_\\/_:     .
+      :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.
+  .''.: /\\ :   ./)\\   ':'* /\\ * :  '..'.  -=:o:=-
+ :_\\/_:'.:::.    ' *''*    * '.\\'/.' _\\(/_'.':'.'
+ : /\\ : :::::     *_\\/_*     -= o =-  /)\\    '  *
+  '..'  ':::'     * /\\ *     .'/.\\'.   '
+      *            *..*         :
+      *
+      .              YOU WIN!!!
+"
+    colorizer.write "#{congrats}"
+  end
+
+  def reveal
+    (0...16).each do |i|
+      @board[i] = " #{@cards[i].image} "
+    end
+  end
+
+  def rainbow
+    # "I always look for rainbows..."
+    colorizer = Lolize::Colorizer.new
+    solved = "
+             ╔═════╦═════╦═════╦═════╗
+             ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║
+             ╠═════╬═════╬═════╬═════╣
+             ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║
+             ╠═════╬═════╬═════╬═════╣
+             ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║
+             ╠═════╬═════╬═════╬═════╣
+             ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║
+             ╚═════╩═════╩═════╩═════╝
+
+"
+    colorizer.write "#{solved}"
+  end
+
+
+#   def start_screen
+#     colorizer = Lolize::Colorizer.new
+#     splash = "
+#
+#                    _       _     ___
+#                   | |     | |   |__ \\
+#    _ __ ___   __ _| |_ ___| |__    ) |
+#   | '_ ` _ \\ / _` | __/ __| '_ \\  / /
+#   | | | | | | (_| | || (__| | | |/ /_
+#   |_| |_| |_|\\__,_|\\__\\___|_| |_|____|
+#
+#   ℵ    ‡    ≈    ¥    ♠    ฿    ☯    ★
+#
+#
+# "
+#     colorizer.write "#{splash}"
+#   end
 end
 
 
