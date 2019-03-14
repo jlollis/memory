@@ -9,13 +9,13 @@ To play:
 <br />
 
 <p align="center">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png" width="450">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png" width=30%>
+  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png" width=50%>
+  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png" width=50%>
 </p>
 
 <br />
 
 <p align="center">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay2.png">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-end-screen.png">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay2.png" width=50%>
+  <img src="https://github.com/jlollis/memory/blob/master/match2-end-screen.png" width=50%>
 </p>
