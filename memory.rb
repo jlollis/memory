@@ -11,7 +11,6 @@ class Memory
 
   def initialize(board = nil)
     @board = board || Array.new(16, " ")
-    # @board = board || " _ " * 16
     @cards = generate_cards
     @cards.shuffle!
     @game_over = false
@@ -20,21 +19,18 @@ class Memory
   def play
     clear
     populate_board
-
-    clear
-    # reveal
-    # end_screen
-    # rainbow
     start_screen
-    sleep (2)
-    # until game_over? == true
+    sleep 2
+
     until game_over?
       take_turn
     end
+
     clear
     reveal
     end_screen
-    sleep (60)
+    rainbow
+    sleep 30
   end
 
   def game_over?
@@ -101,30 +97,6 @@ class Memory
     puts
   end
 
-#   def reveal
-#     (0...16).each do |i|
-#       @board[i] = " #{@cards[i].image} "
-#       end
-#   end
-#
-#   def rainbow
-#     # "I always look for rainbows..."
-#     colorizer = Lolize::Colorizer.new
-#       solved = "
-#              ╔═════╦═════╦═════╦═════╗
-#              ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║
-#              ╠═════╬═════╬═════╬═════╣
-#              ║ #{@board[4]} ║ #{@board[5]} ║ #{@board[6]} ║ #{@board[7]} ║
-#              ╠═════╬═════╬═════╬═════╣
-#              ║ #{@board[8]} ║ #{@board[9]} ║ #{@board[10]} ║ #{@board[11]} ║
-#              ╠═════╬═════╬═════╬═════╣
-#              ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║
-#              ╚═════╩═════╩═════╩═════╝
-#
-# "
-#     colorizer.write "#{solved}"
-#   end
-
   def take_turn
     clear
     render_board
@@ -146,21 +118,19 @@ class Memory
       puts
       Card.decrement_count
       puts " Card count is: #{Card.print_count()}"
-      sleep(2)
+      sleep 2
       @board[@pick1] = " #{@cards[@pick1].image} "
       @board[@pick2] = " #{@cards[@pick2].image} "
     else
       puts " No match."
-      sleep(3)
+      sleep 3
       reset_card(@pick1)
       reset_card(@pick2)
     end
   end
 
   def reset_card(square)
-    # then converted block to ternary operator
-    # (not sure if improvement...)
-    # @board[square] = (square <= 9) ? " #{square} " : " #{square}"
+    # converted block to ternary operator (not sure if improvement...)
     @board[square] = square <= 9 ? " #{square} " : " #{square}"
 
     # https://www.rubydoc.info/github/bbatsov/RuboCop/RuboCop/Cop/Style/ConditionalAssignment
@@ -170,6 +140,12 @@ class Memory
     # else
     #   @board[square] = " #{square}"
     # end
+  end
+
+  def reveal
+    (0...16).each do |i|
+      @board[i] = " #{@cards[i].image} "
+    end
   end
 
   def clear
@@ -217,12 +193,6 @@ class Memory
     colorizer.write "#{congrats}"
   end
 
-  def reveal
-    (0...16).each do |i|
-      @board[i] = " #{@cards[i].image} "
-    end
-  end
-
   def rainbow
     # "I always look for rainbows..."
     colorizer = Lolize::Colorizer.new
@@ -241,31 +211,11 @@ class Memory
     colorizer.write "#{solved}"
   end
 
+  private :reveal, :rainbow
 
-#   def start_screen
-#     colorizer = Lolize::Colorizer.new
-#     splash = "
-#
-#                    _       _     ___
-#                   | |     | |   |__ \\
-#    _ __ ___   __ _| |_ ___| |__    ) |
-#   | '_ ` _ \\ / _` | __/ __| '_ \\  / /
-#   | | | | | | (_| | || (__| | | |/ /_
-#   |_| |_| |_|\\__,_|\\__\\___|_| |_|____|
-#
-#   ℵ    ‡    ≈    ¥    ♠    ฿    ☯    ★
-#
-#
-# "
-#     colorizer.write "#{splash}"
-#   end
 end
-
 
 if __FILE__ == $PROGRAM_NAME
   t = Memory.new
   t.play
 end
-
-  # t = Memory.new
-  # t.play

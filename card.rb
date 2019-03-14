@@ -2,7 +2,7 @@
 
 class Card
 
-# Initialize our class variables
+  # initialize class variables
   @@count = 0
 
   attr_accessor :image, :visible
@@ -14,12 +14,19 @@ class Card
   end
 
   def self.print_count()
-    # puts "Card count is: #@@count"
     @@count
   end
 
   def self.decrement_count
     @@count -= 2
   end
+
+  # def self.visible?
+  #   @visible
+  # end
+  #
+  # def self.hide
+  #   @visible = true
+  # end
 
 end
