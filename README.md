@@ -9,7 +9,7 @@ To play:
 <br />
 
 <p align="center">
-  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png" width=30%>
   <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png">
 </p>
 
