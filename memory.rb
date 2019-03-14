@@ -194,7 +194,6 @@ class Memory
   end
 
   def rainbow
-    # "I always look for rainbows..."
     colorizer = Lolize::Colorizer.new
     solved = "
              ╔═════╦═════╦═════╦═════╗
