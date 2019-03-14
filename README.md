@@ -6,3 +6,16 @@ To play:
     ```
     ruby memory.rb
     ```
+<br />
+
+<p align="center">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-start.png">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay.png">
+</p>
+
+<br />
+
+<p align="center">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-gameplay2.png">
+  <img src="https://github.com/jlollis/memory/blob/master/match2-end-screen.png">
+</p>

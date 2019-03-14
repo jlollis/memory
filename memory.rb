@@ -20,8 +20,9 @@ class Memory
   def play
     clear
     populate_board
-    start_screen
-    sleep (2)
+
+    end_screen
+    sleep (20)
     until game_over? == true
       take_turn
     end
@@ -63,6 +64,7 @@ class Memory
     bar = "    ╠═════╬═════╬═════╬═════╣"
     btm = "    ╚═════╩═════╩═════╩═════╝"
 
+    puts
     puts top
     print"    ║"
     (0...4).each do |i|
@@ -117,28 +119,28 @@ class Memory
   def take_turn
     clear
     render_board
-    print "Pick a card: "
+    print " Pick a card: "
     @pick1 = gets.chomp.to_i
     @board[@pick1] = " #{@cards[pick1].image} "
     clear
     render_board
-    puts "You chose: #{@board[@pick1]}"
+    puts " You chose: #{@board[@pick1]}"
 
-    print"Pick another card: "
+    print" Pick another card: "
     @pick2 = gets.chomp.to_i
     @board[@pick2] = " #{@cards[@pick2].image} "
     clear
     render_board
     if @cards[@pick1].image == @cards[@pick2].image
-      puts "You have a match!"
+      puts " You have a match!"
       puts
       Card.decrement_count
-      puts "Card count is: #{Card.print_count()}"
+      puts " Card count is: #{Card.print_count()}"
       sleep(2)
       @board[@pick1] = " #{@cards[@pick1].image} "
       @board[@pick2] = " #{@cards[@pick2].image} "
     else
-      puts "No match"
+      puts " No match."
       sleep(3)
       reset_card(@pick1)
       reset_card(@pick2)
@@ -177,7 +179,8 @@ class Memory
   '..'  ':::'     * /\\ *     .'/.\\'.   '
       *            *..*         :
       *
-      .
+      .              YOU WIN!!!
+
 
 "
     colorizer.write "#{congrats}"
@@ -188,14 +191,14 @@ class Memory
     colorizer = Lolize::Colorizer.new
     splash = "
 
-                  _       _     ___
-                 | |     | |   |__ \\
-  _ __ ___   __ _| |_ ___| |__    ) |
- | '_ ` _ \\ / _` | __/ __| '_ \\  / /
- | | | | | | (_| | || (__| | | |/ /_
- |_| |_| |_|\\__,_|\\__\\___|_| |_|____|
+                   _       _     ___
+                  | |     | |   |__ \\
+   _ __ ___   __ _| |_ ___| |__    ) |
+  | '_ ` _ \\ / _` | __/ __| '_ \\  / /
+  | | | | | | (_| | || (__| | | |/ /_
+  |_| |_| |_|\\__,_|\\__\\___|_| |_|____|
 
- ℵ    ‡    ≈    ¥    ♠    ฿    ☯    ★
+  ℵ    ‡    ≈    ¥    ♠    ฿    ☯    ★
 
 
 "
