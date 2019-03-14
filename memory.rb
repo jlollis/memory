@@ -1,4 +1,5 @@
-# require "colorize"
+# memory.rb - Julie Lollis
+
 require_relative 'card'
 gem 'lolize'
 require "lolize"
@@ -58,7 +59,15 @@ class Memory
   end
 
   def render_board
-    puts
+    # top = "    ╔═════╦═════╦═════╦═════╗"
+    # bar = "    ╠═════╬═════╬═════╬═════╣"
+    # btm = "    ╚═════╩═════╩═════╩═════╝"
+    #
+    # puts top
+    # (0..4).each do |i|
+    #   puts"║ #{@board[i]} "
+    # end
+
     puts "    ╔═════╦═════╦═════╦═════╗"
     puts "    ║ #{@board[0]} ║ #{@board[1]} ║ #{@board[2]} ║ #{@board[3]} ║"
     puts "    ╠═════╬═════╬═════╬═════╣"

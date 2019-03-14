@@ -1,4 +1,5 @@
-# contains face value, and whether card is face-up or face-down
+# card.rb - Julie Lollis
+
 class Card
 
 # Initialize our class variables
