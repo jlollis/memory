@@ -2,7 +2,7 @@
 
 require_relative 'card'
 gem 'lolize'
-require "lolize"
+require 'lolize'
 
 class Memory
   IMAGE = %i(ℵ ‡ ≈ ¥ ♠ ฿ ☯ ★)
@@ -10,7 +10,7 @@ class Memory
   attr_accessor :grid, :game_over, :pick1, :pick2, :end_screen
 
   def initialize(board = nil)
-    @board = board || Array.new(16, " ")
+    @board = board || Array.new(16, ' ')
     @cards = generate_cards
     @cards.shuffle!
     @game_over = false
@@ -30,7 +30,7 @@ class Memory
     reveal
     end_screen
     rainbow
-    sleep 30
+    sleep 5
   end
 
   def game_over?
@@ -61,34 +61,34 @@ class Memory
   end
 
   def render_board
-    top = "    ╔═════╦═════╦═════╦═════╗"
-    bar = "    ╠═════╬═════╬═════╬═════╣"
-    btm = "    ╚═════╩═════╩═════╩═════╝"
+    top = '    ╔═════╦═════╦═════╦═════╗'
+    bar = '    ╠═════╬═════╬═════╬═════╣'
+    btm = '    ╚═════╩═════╩═════╩═════╝'
 
     puts
     puts top
-    print"    ║"
+    print'    ║'
     (0...4).each do |i|
       print" #{@board[i]} ║"
     end
     puts
 
     puts bar
-    print"    ║"
+    print'    ║'
     (4...8).each do |i|
       print" #{@board[i]} ║"
     end
     puts
 
     puts bar
-    print"    ║"
+    print'    ║'
     (8...12).each do |i|
       print" #{@board[i]} ║"
     end
     puts
 
     puts bar
-    print"    ║"
+    print'    ║'
     (12...16).each do |i|
       print" #{@board[i]} ║"
     end
@@ -100,33 +100,51 @@ class Memory
   def take_turn
     clear
     render_board
-    print " Pick a card: "
-    @pick1 = gets.chomp.to_i
+    print 'Pick a card: '
+
+      until check_input(pick = gets.chomp) != nil
+          warn_user
+      end
+      @pick1 = pick.to_i
     @board[@pick1] = " #{@cards[@pick1].image} "
+
     clear
     render_board
-    puts " You chose: #{@board[@pick1]}"
+    puts "You chose: #{@board[@pick1]}"
+    print'Pick another card: '
 
-    print" Pick another card: "
-    @pick2 = gets.chomp.to_i
+    until check_input(pick = gets.chomp) != nil
+      warn_user
+    end
+    @pick2 = pick.to_i
     @board[@pick2] = " #{@cards[@pick2].image} "
+
     clear
     render_board
 
     if @cards[@pick1].image == @cards[@pick2].image
-      puts " You have a match!"
+      puts 'You have a match!'
       puts
       Card.decrement_count
-      puts " Card count is: #{Card.print_count()}"
-      sleep 2
+      puts "#{Card.print_count()} cards remaining."
       @board[@pick1] = " #{@cards[@pick1].image} "
       @board[@pick2] = " #{@cards[@pick2].image} "
     else
-      puts " No match."
-      sleep 3
+      puts 'No match.'
       reset_card(@pick1)
       reset_card(@pick2)
     end
+  end
+
+  def check_input(input)
+    # input =~ /^\d{1,2}(?!\d)/
+    # better regex:
+    input =~ /^([0-9]|1[0-5]|)$/
+  end
+
+  def warn_user
+    puts 'That is not a valid entry.'
+    puts 'Please enter a number from 0-15.'
   end
 
   def reset_card(square)
@@ -158,13 +176,17 @@ class Memory
   def start_screen
     colorizer = Lolize::Colorizer.new
     splash = "
+
                    _       _     ___
                   | |     | |   |__ \\
    _ __ ___   __ _| |_ ___| |__    ) |
   | '_ ` _ \\ / _` | __/ __| '_ \\  / /
   | | | | | | (_| | || (__| | | |/ /_
   |_| |_| |_|\\__,_|\\__\\___|_| |_|____|
+
   ℵ    ‡    ≈    ¥    ♠    ฿    ☯    ★
+
+
 "
     colorizer.write "#{splash}"
   end
@@ -174,6 +196,7 @@ class Memory
     colorizer = Lolize::Colorizer.new
     congrats = "
                You are a Match 2 GOD!
+
                                    .''.
        .''.      .        *''*    :_\\/_:     .
       :_\\/_:   _\\(/_  .:.*_\\/_*   : /\\ :  .'.:.'.
@@ -200,6 +223,7 @@ class Memory
              ╠═════╬═════╬═════╬═════╣
              ║ #{@board[12]} ║ #{@board[13]} ║ #{@board[14]} ║ #{@board[15]} ║
              ╚═════╩═════╩═════╩═════╝
+
 "
     colorizer.write "#{solved}"
   end

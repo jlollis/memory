@@ -21,12 +21,12 @@ class Card
     @@count -= 2
   end
 
-  # def self.visible?
-  #   @visible
-  # end
-  #
-  # def self.hide
-  #   @visible = true
-  # end
+  def self.visible?
+    @visible
+  end
+
+  def self.show
+    @visible = true
+  end
 
 end
